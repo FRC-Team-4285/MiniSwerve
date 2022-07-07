@@ -33,7 +33,6 @@ public class Robot extends TimedRobot {
 
     public static AutonomousCommand autonomousCommand;
     public static Drive drive;
-    public static FieldCentricSwerveDrive fieldCentricSwerveDrive;
     public static OI oi;
     public static Object ballpickup;
 
@@ -46,7 +45,7 @@ public class Robot extends TimedRobot {
         RobotMap.init();
 
         autonomousCommand = new AutonomousCommand();
-        fieldCentricSwerveDrive = new FieldCentricSwerveDrive();
+        drive = new Drive();
         oi = new OI(); // OI is always last!!
 
         zeroHeading = navX.getFusedHeading();

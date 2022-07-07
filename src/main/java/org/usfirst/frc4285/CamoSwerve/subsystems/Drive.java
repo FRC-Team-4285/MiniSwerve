@@ -51,8 +51,8 @@ public class Drive extends Subsystem {
     private TalonSRX steerRightRear;
 
     // Wheel base lengths are measured from where wheels touch the ground
-    public static final double WHEEL_BASE_LENGTH = 22.5;
-    public static final double WHEEL_BASE_WIDTH = 22.5;
+    public static final double WHEEL_BASE_LENGTH = 18.0;
+    public static final double WHEEL_BASE_WIDTH = 18.0;
 
     // Encoder counts are 1024 for ma3. 4096 for ctre mag encoders
     public static final double ENCODER_COUNT_PER_ROTATION = 1024.0; 
@@ -63,7 +63,7 @@ public class Drive extends Subsystem {
     public static final double MAX_SPEED = 0.3;
 
     // Apply a governor to the speed output. Use 1.0 to disable.
-    public static final double SPEED_GOVERNOR = 0.8;
+    public static final double SPEED_GOVERNOR = 0.5;
     public static final double STEER_DEGREES_PER_COUNT = 360.0 / ENCODER_COUNT_PER_ROTATION;
 
     // Drive inches per count is calculated for cimcoders under motor with a final gear reduction of 6.67
@@ -77,7 +77,7 @@ public class Drive extends Subsystem {
     // set your P to the last value that did not oscillate. Set D to about P * 10 to start.
     private static final double DRIVE_P = 7.5;
     private static final double DRIVE_I = 0.02;
-    private static final double DRIVE_D = 75;
+    private static final double DRIVE_D = 50;
 
     private static final double STEER_P = 7;
     private static final double STEER_I = 0.02;
@@ -134,7 +134,7 @@ public class Drive extends Subsystem {
         driveRightRearSpark = new CANSparkMax(RobotMap.DRIVE_RIGHT_REAR_ID, MotorType.kBrushless);
         driveRightRearSpark.restoreFactoryDefaults();
         driveRightRearSpark.setIdleMode(IdleMode.kBrake);
-        driveRightRearSpark.setInverted(false);
+        driveRightRearSpark.setInverted(true);
         driveRightRearSpark.setOpenLoopRampRate(0.125);
         driveRightRearSpark.setSmartCurrentLimit(60);
 		driveRightRearController = driveRightRearSpark.getPIDController();
@@ -252,13 +252,12 @@ public class Drive extends Subsystem {
         if (robot_config == 1) {
             // 2022 Main Robot Configuration - Fixed Wheels
             
-            // Practice Robot Configuration
+            // Mini Swerve Bot Configuration
             angleLF = angle(B, D) - 112;
-            angleLR = angle(A, D) - 90; // - 80.5
-            angleRF = angle(B, C) + 97.5; // Increasing turns to the right
-            angleRR = angle(A, C) + 22; // + 14 22
+            angleLR = angle(A, D) - 85; // - 80.5
+            angleRF = angle(B, C) + 93; // Increasing turns to the right
+            angleRR = angle(A, C) - 169; // + 14 22
 
-        
            //2022 Main Bot Angles
            // angleLF = angle(B, D) - 90; // A1
            // angleLR = angle(A, D) - 163; // A4

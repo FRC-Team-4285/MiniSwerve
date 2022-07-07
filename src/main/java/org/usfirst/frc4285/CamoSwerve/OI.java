@@ -32,26 +32,6 @@ public class OI {
     public Joystick leftJoy;
     public Joystick rightJoy;
     public XboxController controller;
-    public Button btnThrow;
-    public Button btnTurretTurnRight;
-    public Button btnTurretTurnLeft;
-    public Button btnTurretTracking;
-    public Button btnBallIntakePickup;
-    public Button btnBallIntakeUp;
-    public Button btnBallIntakeDrop;
-    public Button btnTurretFlapLower;
-    public Button btnTurretFlapRaise;
-    public Button btnHailMary;
-    public Button btnLift;
-    public Button btnLower;
-    public Button btnLiftToColorWheel;
-    public Button btnLiftToStartingPosition;
-    public Button btnSpinColorWheel;
-    public Button btnClimberRaise;
-    public Button btnClimberLower;
-    public Button btnBallIntake;
-    public Timer time;
-    public Button btnZeroDrive;
 
     public  OI() {
         //////////////////////////////////
