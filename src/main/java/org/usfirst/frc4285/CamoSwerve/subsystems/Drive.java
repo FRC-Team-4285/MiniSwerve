@@ -51,8 +51,8 @@ public class Drive extends Subsystem {
     private TalonSRX steerRightRear;
 
     // Wheel base lengths are measured from where wheels touch the ground
-    public static final double WHEEL_BASE_LENGTH = 18.0;
-    public static final double WHEEL_BASE_WIDTH = 18.0;
+    public static final double WHEEL_BASE_LENGTH = 11.25; //measured from center of each module
+    public static final double WHEEL_BASE_WIDTH = 11.25;
 
     // Encoder counts are 1024 for ma3. 4096 for ctre mag encoders
     public static final double ENCODER_COUNT_PER_ROTATION = 1024.0; 
@@ -60,10 +60,10 @@ public class Drive extends Subsystem {
     public static final double WHEEL_DIAMETER = 4.0;
 
     // Max speed is 0 to 1 
-    public static final double MAX_SPEED = 0.3;
+    public static final double MAX_SPEED = 1.0; //was 0.3
 
     // Apply a governor to the speed output. Use 1.0 to disable.
-    public static final double SPEED_GOVERNOR = 0.5;
+    public static final double SPEED_GOVERNOR = 0.3; //was 0.5
     public static final double STEER_DEGREES_PER_COUNT = 360.0 / ENCODER_COUNT_PER_ROTATION;
 
     // Drive inches per count is calculated for cimcoders under motor with a final gear reduction of 6.67
@@ -75,13 +75,13 @@ public class Drive extends Subsystem {
     // The steering PIDs need to be adjusted for your drive. Start with I = D = 0.
     // Set P low and try moving. If no oscilation, double P. When steer oscillates,
     // set your P to the last value that did not oscillate. Set D to about P * 10 to start.
-    private static final double DRIVE_P = 7.5;
-    private static final double DRIVE_I = 0.02;
-    private static final double DRIVE_D = 50;
+    private static final double DRIVE_P = 10.0; //was 7.5
+    private static final double DRIVE_I = 0.1; //was 0.02
+    private static final double DRIVE_D = 10.0; //was 50
 
-    private static final double STEER_P = 7;
-    private static final double STEER_I = 0.02;
-    private static final double STEER_D = 40;
+    private static final double STEER_P = 10.0; //was 7
+    private static final double STEER_I = 0.1; //was 0.02
+    private static final double STEER_D = 10.0; //was 40
     private static final int STATUS_FRAME_PERIOD = 5;
 
     public Drive() {
@@ -95,7 +95,7 @@ public class Drive extends Subsystem {
         driveLeftFrontSpark = new CANSparkMax(RobotMap.DRIVE_LEFT_FRONT_ID, MotorType.kBrushless);
         driveLeftFrontSpark.restoreFactoryDefaults();
         driveLeftFrontSpark.setIdleMode(IdleMode.kBrake);
-        driveLeftFrontSpark.setInverted(false);
+        driveLeftFrontSpark.setInverted(true); //was false
         driveLeftFrontSpark.setOpenLoopRampRate(0.125);
         driveLeftFrontSpark.setSmartCurrentLimit(60);
 		driveLeftFrontController = driveLeftFrontSpark.getPIDController();
@@ -108,7 +108,7 @@ public class Drive extends Subsystem {
         driveLeftRearSpark = new CANSparkMax(RobotMap.DRIVE_LEFT_REAR_ID, MotorType.kBrushless);
         driveLeftRearSpark.restoreFactoryDefaults();
         driveLeftRearSpark.setIdleMode(IdleMode.kBrake);
-        driveLeftRearSpark.setInverted(true);
+        driveLeftRearSpark.setInverted(true);//was false
         driveLeftRearSpark.setOpenLoopRampRate(0.125);
         driveLeftRearSpark.setSmartCurrentLimit(60);
 		driveLeftRearController = driveLeftRearSpark.getPIDController();
@@ -121,7 +121,7 @@ public class Drive extends Subsystem {
         driveRightFrontSpark = new CANSparkMax(RobotMap.DRIVE_RIGHT_FRONT_ID, MotorType.kBrushless);
         driveRightFrontSpark.restoreFactoryDefaults();
         driveRightFrontSpark.setIdleMode(IdleMode.kBrake);
-        driveRightFrontSpark.setInverted(true);
+        driveRightFrontSpark.setInverted(true); //was false
         driveRightFrontSpark.setOpenLoopRampRate(0.125);
         driveRightFrontSpark.setSmartCurrentLimit(60);
 		driveRightFrontController = driveRightFrontSpark.getPIDController();
@@ -134,7 +134,7 @@ public class Drive extends Subsystem {
         driveRightRearSpark = new CANSparkMax(RobotMap.DRIVE_RIGHT_REAR_ID, MotorType.kBrushless);
         driveRightRearSpark.restoreFactoryDefaults();
         driveRightRearSpark.setIdleMode(IdleMode.kBrake);
-        driveRightRearSpark.setInverted(true);
+        driveRightRearSpark.setInverted(false); //was true
         driveRightRearSpark.setOpenLoopRampRate(0.125);
         driveRightRearSpark.setSmartCurrentLimit(60);
 		driveRightRearController = driveRightRearSpark.getPIDController();
@@ -170,7 +170,7 @@ public class Drive extends Subsystem {
         steerLeftRear.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0);
         steerLeftRear.configFeedbackNotContinuous(false, 10);
         steerLeftRear.setSensorPhase(true);
-        steerLeftRear.setInverted(false);
+        steerLeftRear.setInverted(false); //was true
         steerLeftRear.config_kP(0, STEER_P, 0);
         steerLeftRear.config_kI(0, STEER_I, 0);
         steerLeftRear.config_kD(0, STEER_D, 0);
@@ -185,7 +185,7 @@ public class Drive extends Subsystem {
         steerRightFront.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0);
         steerRightFront.configFeedbackNotContinuous(false, 10);
         steerRightFront.setSensorPhase(true);
-        steerRightFront.setInverted(false);
+        steerRightFront.setInverted(false); //was true
         steerRightFront.config_kP(0, STEER_P, 0);
         steerRightFront.config_kI(0, STEER_I, 0);
         steerRightFront.config_kD(0, STEER_D, 0);
@@ -251,12 +251,12 @@ public class Drive extends Subsystem {
         int robot_config = 1;
         if (robot_config == 1) {
             // 2022 Main Robot Configuration - Fixed Wheels
-            
+
             // Mini Swerve Bot Configuration
-            angleLF = angle(B, D) - 112;
-            angleLR = angle(A, D) - 85; // - 80.5
-            angleRF = angle(B, C) + 93; // Increasing turns to the right
-            angleRR = angle(A, C) - 169; // + 14 22
+            angleLF = angle(B, D) + 5.0; //was 70
+            angleLR = angle(A, D) + 100.0; //was -10
+            angleRF = angle(B, C) - 25.0; //was 170
+            angleRR = angle(A, C) + 4.0; //was 10
 
            //2022 Main Bot Angles
            // angleLF = angle(B, D) - 90; // A1

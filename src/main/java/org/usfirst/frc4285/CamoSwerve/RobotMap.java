@@ -18,15 +18,15 @@ public class RobotMap {
     public static final int RIGHT_JOYSTICK = 1;
     public static final int CONTROLLER = 2;
 
-    public static final int DRIVE_LEFT_FRONT_ID = 3;
-    public static final int DRIVE_LEFT_REAR_ID = 4;
-    public static final int DRIVE_RIGHT_FRONT_ID = 2;
-    public static final int DRIVE_RIGHT_REAR_ID = 1;
+    public static final int DRIVE_LEFT_FRONT_ID = 2; // was 3, 2 for mirrored
+    public static final int DRIVE_LEFT_REAR_ID = 1; // was 4, 1 for mirrored
+    public static final int DRIVE_RIGHT_FRONT_ID = 3; // was 2, 3 for mirrored
+    public static final int DRIVE_RIGHT_REAR_ID = 4; //was 1, 4 for mirrored
 
-    public static final int STEER_LEFT_FRONT_ID = 7; // 5
-    public static final int STEER_LEFT_REAR_ID = 8;  // 6  
-    public static final int STEER_RIGHT_FRONT_ID = 6; // 8
-    public static final int STEER_RIGHT_REAR_ID = 5; // 7
+    public static final int STEER_LEFT_FRONT_ID = 6; // was 7, 6 for mirrored
+    public static final int STEER_LEFT_REAR_ID = 5;  // was 8, 5 for mirrored
+    public static final int STEER_RIGHT_FRONT_ID = 7; // was 6, 7 for mirrored
+    public static final int STEER_RIGHT_REAR_ID = 8; // was 5, 8 for mirrored
 
     // Use Phoenix Diagnostics Tool + USB to roborio to find this.
 
