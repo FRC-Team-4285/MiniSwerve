@@ -60,10 +60,10 @@ public class Drive extends Subsystem {
     public static final double WHEEL_DIAMETER = 4.0;
 
     // Max speed is 0 to 1 
-    public static final double MAX_SPEED = 1.0; //was 0.3
+    public static final double MAX_SPEED = 0.3; //was 0.3
 
     // Apply a governor to the speed output. Use 1.0 to disable.
-    public static final double SPEED_GOVERNOR = 0.3; //was 0.5
+    public static final double SPEED_GOVERNOR = 3.0; //was 0.5
     public static final double STEER_DEGREES_PER_COUNT = 360.0 / ENCODER_COUNT_PER_ROTATION;
 
     // Drive inches per count is calculated for cimcoders under motor with a final gear reduction of 6.67
@@ -81,7 +81,7 @@ public class Drive extends Subsystem {
 
     private static final double STEER_P = 10.0; //was 7
     private static final double STEER_I = 0.1; //was 0.02
-    private static final double STEER_D = 10.0; //was 40
+    private static final double STEER_D = 5.0; //was 40
     private static final int STATUS_FRAME_PERIOD = 5;
 
     public Drive() {

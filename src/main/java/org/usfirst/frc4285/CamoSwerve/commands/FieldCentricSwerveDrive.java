@@ -49,7 +49,7 @@ public class FieldCentricSwerveDrive extends Command {
         //Two Joysticks
         double strafe = Robot.oi.leftJoy.getX();
         double forward = Robot.oi.leftJoy.getY() * -1;
-        double omega = Robot.oi.rightJoy.getX() * OMEGA_SCALE;
+        double omega = Robot.oi.leftJoy.getZ() * OMEGA_SCALE; // was rightJoy.getX()
 
         // Add a small deadzone on the joysticks
         if (Math.abs(strafe) < DEADZONE) {
