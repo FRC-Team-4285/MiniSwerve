@@ -40,10 +40,15 @@ public class FieldCentricSwerveDrive extends Command {
         double omega = Robot.oi.rightJoy.getZ() * OMEGA_SCALE;
         */
 
-        // Xbox Controller
+        // One Joystick - different brand
+        // double strafe = Robot.oi.controller.getRawAxis(0);
+        // double forward = Robot.oi.controller.getRawAxis(1) * -1;
+        // double omega = Robot.oi.controller.getRawAxis(2) * OMEGA_SCALE;
+
+	// Xbox Controller
         double strafe = Robot.oi.controller.getRawAxis(0);
         double forward = Robot.oi.controller.getRawAxis(1) * -1;
-        double omega = Robot.oi.controller.getRawAxis(2) * OMEGA_SCALE;
+        double omega = Robot.oi.controller.getRawAxis(4) * OMEGA_SCALE;
 
         // Two Joysticks
         // double strafe = Robot.oi.leftJoy.getX();
